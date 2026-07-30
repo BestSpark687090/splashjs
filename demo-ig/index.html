@@ -6,11 +6,20 @@
     <title>splashjs demo</title>
 </head>
 <body>
+    <div class="splash">Hello this is the place the splash text is gonna go!!!</div>
+    <textarea>It's dynamic too...? ... not yet.</textarea>
+    <img src="./icon.png" class="icon">
     <script src="../index.js"></script>
     <script>
         splashjs({
-            preset: "default"
+            preset: "default",
+            target: ".icon",
+            splashes: ["Hello! I am a splash. I change when I refresh!","option 2."],
+            color: "#ffffff",
+            border: "1px red",
+            fontSize: "x-large"
         })
     </script>
+
 </body>
 </html>
