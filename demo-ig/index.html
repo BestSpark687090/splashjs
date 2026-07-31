@@ -4,21 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>splashjs demo</title>
+    <style>
+        p{
+            margin:0;
+        }
+        body{
+            background:gray;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        </style>
 </head>
 <body>
-    <div class="splash">Hello this is the place the splash text is gonna go!!!</div>
-    <textarea>It's dynamic too...? ... not yet.</textarea>
+    <!-- Span because divs go out all the way. This will need to be accounted for in your code.
+     Mostly because the splash text specifically goes on the bottom right of the text! -->
+     <br><br><br>
+    <span class="splash">Hello this is the place the splash text is gonna go!!!</span>
+    <br>
+    <textarea rows="12">Use this textarea to test the text's moving capabilities!</textarea>
     <img src="./icon.png" class="icon">
+    <img src="./icon.png" class="icon2">
+    <span id="follow_cursor" style="position: absolute; left:0; top:0;pointer-events:none;">🍉</span>
     <script src="../index.js"></script>
     <script>
         splashjs({
             preset: "default",
             target: ".icon",
-            splashes: ["Hello! I am a splash. I change when I refresh!","option 2."],
-            color: "#ffffff",
-            border: "1px red",
-            fontSize: "x-large"
+            splashes: ["Hello! I am a splash.\nI can change to a different quote\nwhen I refresh!","option 2. This changes\neach time you refresh!"],
+            color: "#ffff55",
+            // border: "",
+            fontSize: "x-large",
+            font: "Arial",
+            moveInterval: 25,
         })
+        splashjs({
+            target: ".splash",
+            splashes: ["text\nsplash!!"],
+            color: "#ffff55",
+            // border: "",
+            fontSize: "x-large",
+            font: "Arial",
+            moveInterval: 25
+        })
+        splashjs({
+            target: "textarea",
+            splashes: ["This one's on the textarea!!"],
+            color: "#ffff55",
+            // border: "",
+            fontSize: "x-large",
+            font: "Arial",
+            moveInterval: 25
+        })
+        const follower = document.getElementById('follow_cursor');
+
+// 2. Listen for mouse movement on the document or body
+document.addEventListener('mousemove', (event) => {
+    // 3. Update position based on cursor coordinates
+    // Using transform is often more performant than left/top
+    follower.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+});
+        splashjs({
+            target: "#follow_cursor",
+            splashes: ['haha i follow your mouse\nthis shows that translate works fine btw'],
+            color: "#ffff55",
+            // border: "",
+            moveInterval: 25
+        })
+        // There is NOT a way to do multiple. 
+        // I could do a little thing to check if the target's an element.
     </script>
 
 </body>
