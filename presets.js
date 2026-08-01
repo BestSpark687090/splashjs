@@ -1,11 +1,7 @@
-const splashjsPresetDefault = {
+const presetDefault = {
     // Gonna create this default for me later i guess?
-    splashes: [
-        "Hello world!",
-        "Made with SplashJS!",
-        "SplashJS - Made by BestSpark687090",
-    ],
-    color: "white",
+    // Make the user provide their own splashes.
+    color: "#ffff55",
     font: "Arial",
     rotation: -45,
     border: "none",
@@ -24,7 +20,7 @@ const splashjsPresetDefault = {
     },
     moveInterval: 250,
 };
-const splashjsPresetEmpty = {
+const presetEmpty = {
     splashes: [""],
     color: "",
     font: "",
@@ -34,3 +30,4 @@ const splashjsPresetEmpty = {
     animation: "", // No animation
     moveInterval: "", // No movement
 };
+export { presetDefault, presetEmpty };

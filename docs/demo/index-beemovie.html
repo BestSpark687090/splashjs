@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>splashjs demo</title>
+    <style>
+        p{
+            margin:0;
+        }
+        body{
+            background:gray;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        </style>
+        <script src="../index.js"></script>
+</head>
+<body>
+    <!-- Span because divs go out all the way. This will need to be accounted for in your code.
+     Mostly because the splash text specifically goes on the bottom right of the text! -->
+     <p>Genuinely this just produces funny sentences at times so imma leave this here. By funny sentences i mean per-refresh.</p>
+     <br><br><br>
+    <img src="icon.png" class="bee-split">
+    <br><br><br>
+    <script type="module">
+        // Time to make a BeeMovie Script test. Why? Why the heck not!
+        const res = await fetch("../beemovie.txt");
+        const text = await res.text();
+        splashjs({
+            target: ".bee-split",
+            splashes: text.split("\n"),
+            // split: true
+        })
+        </script>
+</body>
+</html>

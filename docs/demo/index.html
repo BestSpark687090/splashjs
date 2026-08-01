@@ -26,9 +26,17 @@
     <textarea rows="12">Use this textarea to test the text's moving capabilities!</textarea>
     <img src="./icon.png" class="icon">
     <img src="./icon.png" class="icon2">
-    <span id="follow_cursor" style="position: absolute; left:0; top:0;pointer-events:none;">🍉</span>
     <script src="../index.js"></script>
-    <script>
+    <div class="targets">
+        <p>hello this is a group test</p>
+        <p>hello this is a group test</p>
+        <p>hello this is a group test</p>
+        <p>hello this is a group test</p>
+    </div>  
+    <br><br><br>
+
+    <p class="default-preset">just the default test</p>
+        <script>
         splashjs({
             preset: "default",
             target: ".icon",
@@ -57,24 +65,30 @@
             font: "Arial",
             moveInterval: 25
         })
-        const follower = document.getElementById('follow_cursor');
 
-// 2. Listen for mouse movement on the document or body
-document.addEventListener('mousemove', (event) => {
-    // 3. Update position based on cursor coordinates
-    // Using transform is often more performant than left/top
-    follower.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-});
+        // Multiple Target Test
         splashjs({
-            target: "#follow_cursor",
-            splashes: ['haha i follow your mouse\nthis shows that translate works fine btw'],
-            color: "#ffff55",
-            // border: "",
-            moveInterval: 25
+            // requires a query selector for them i guess.
+            targets: ".targets>*",
+            splashes: ["multi-splash test"],
+            moveInterval: 250
+        })
+        splashjs({
+            target: ".default-preset",
+            preset: "default"
         })
         // There is NOT a way to do multiple. 
         // I could do a little thing to check if the target's an element.
+        // nvm now there is. lemme write a test
     </script>
-
+    <script type="module">
+        // Time to make a BeeMovie Script test. Why? Why the heck not!
+        const res = await fetch("../beemovie.txt");
+        const text = await res.text();
+        splashjs({
+            target: ".icon2",
+            splashes: [text],
+        })
+        </script>
 </body>
 </html>

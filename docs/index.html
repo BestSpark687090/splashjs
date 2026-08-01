@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SplashJS Docs</title>
+        <style>
+            p {
+                margin: 0;
+                text-align:center;
+            }
+            body {
+                background: gray;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color-scheme: dark;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <script src="../index.js"></script>
+    </head>
+    <body>
+        <h1>SplashJS Documentation</h1>
+        <p>
+            Welcome to the SplashJS documentation! This is a work in progress,
+            so please be patient as I work on it.
+        </p>
+        <p>
+            For now, you can check out the demo page
+            <a href="./demo/index.html">here</a>.
+        </p>
+        <p>
+            Also, check out the Bee Movie script demo
+            <a href="./demo/index-beemovie.html">here</a>. (This is mostly a joke demo.)
+        </p>
+        <p>
+            For more information, check out the GitHub repo
+            <a href="https://github.com/BestSpark687090/splashjs">here</a>.
+        </p>
+        <h2>How to Use SplashJS</h2>
+        <p>
+            Well, for starters, you're gonna need something to
+            <b>actually</b> put the splash on.
+        </p>
+        <p>(duh.)</p>
+        <p>Here's a preset example:</p>
+        <pre><code class="language-javascript">
+splashjs({
+    // This is based off of the default preset, so everything here
+    // is what you'll see normally.
+
+    target: ".test-subject", // You need to set this yourself NO MATTER WHAT.
+    splashes: [
+        "Hello world!",
+        "Made with SplashJS!",
+        "SplashJS - Made by BestSpark687090",
+        "Change me by setting the 'splashes'\noption in the initializer!",
+    ],
+    color: "#ffff55",
+    font: "Arial", // Make sure you have the font loaded/installed!
+    rotation: -45,
+    border: "none",
+    fontSize: "x-large",
+    animation: {
+        movement: [
+            { transform: "scale(1) rotate(-45deg)" },
+            { transform: "scale(1.25) rotate(-45deg)" },
+            { transform: "scale(1) rotate(-45deg)" },
+        ],
+        timing: {
+            duration: 3000,
+            iterations: Infinity,
+            fill: "forwards",
+        },
+    },
+    moveInterval: 250,
+})
+    </code></pre>
+        <p>Here's what that looks like as a demo:</p>
+        <br /><br />
+        <p class="test-subject">Hello I am the test subject for this demo.</p>
+        <script>
+            splashjs({
+                target: ".test-subject",
+                // This is based off of the default preset, so everything here
+                // is what you'll see normally.
+                splashes: [
+                    "Hello world!",
+                    "Made with SplashJS!",
+                    "SplashJS - Made by BestSpark687090",
+                    "Change me by setting the 'splashes'\noption in the initializer!",
+                ],
+                color: "#ffff55",
+                font: "'IBM Plex Sans', 'Times New Roman'",
+                rotation: -45,
+                border: "none",
+                fontSize: "x-large",
+                animation: {
+                    movement: [
+                        { transform: "scale(1) rotate(-45deg)" },
+                        { transform: "scale(1.25) rotate(-45deg)" },
+                        { transform: "scale(1) rotate(-45deg)" },
+                    ],
+                    timing: {
+                        duration: 3000,
+                        iterations: Infinity,
+                        fill: "forwards",
+                    },
+                },
+                moveInterval: 250, 
+            });
+        </script>
+        <br><br><br>
+        <p>The text changes each time you refresh.</p>
+        <p>However... the text can and probably WILL overlap with other elements. (see demo)</p>
+        <h2>What Each Option Does</h2>
+        <pre><code>target(s)</code></pre>
+        <p>Uses a query selector to select the element you want.</p>
+        <p>To select multiple elements, use the <code>targets</code> option instead.</p>
+        <pre><code>splashes</code></pre>
+        <p>Sets the text that will be displayed. <br>
+You can set multiple strings, and it will randomly choose one each time you refresh.</p>
+        <pre><code>color</code></pre>
+        <p>Sets the color of the text. (hex, rgb, rgba, hsl, hsla, etc.)</p>
+        <p>Defaults to the <span style="color: #ffff55">Minecraft Gold color</span>. Why? Why not!</p>
+        <pre><code>font</code></pre>
+        <p>Sets the font of the text. Make sure you have the font loaded/installed!</p>
+        <pre><code>rotation</code></pre>
+        <p>Sets the rotation of the text in whatever you want, but defaults to degrees.<br>To set a custom rotation specifier, make the rotation a string with the specified turn amount.</p>
+        <pre><code>border</code></pre>
+        <p>Sets the outline of the text. (uses text stroke, kinda like the border property... but not.)</p>
+        <pre><code>fontSize</code></pre>
+        <p>Sets the font size of the text. Uses whatever unit you specify.</p>
+        <pre><code>animation</code></pre>
+        <p>Sets the animation of the text. Uses an object with the movement and timing properties.
+            <br>It's like animating an object in JS.<br>
+            See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animate">the MDN docs</a> for details.<br>
+        As of right now, CSS animations are not supported. I'm trying my best to get that working though!</p>
+            <!-- TODO: Add CSS animation documentation -->
+        </p>
+        <pre><code>moveInterval</code></pre>
+        <p>Sets how often the text will check for position updates. (in milliseconds)<br>
+        To remove position updates, set the moveInterval to something other than a number.</p>
+        <h2>How to load SplashJS</h2>
+        <p>To load SplashJS, you can just use a script tag!</p>
+        <pre><code class="language-html">&lt;script src="splash.js"&gt;&lt;/script&gt;</code></pre>
+        You can also use the JSDelivr CDN to load SplashJS. 
+        <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/gh/BestSpark687090/splashjs/index.js"&gt;&lt;/script&gt;</code></pre>
+        <p>That's it! Now you can use SplashJS!</p>
+        <br><br><br>
+        <p>PS: sorry for not having this... better. I'm kinda lazy, so I just wrote it by hand.
+            <br>I know that sounds worse, but i didn't want to figure out a doc system of some sort.</p>
+    </body>
+</html>
