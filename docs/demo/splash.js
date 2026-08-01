@@ -171,15 +171,15 @@ async function splashjs(options = {}) {
         throw new tooLazyError("Implement custom animations from CSS");
     } else {
         // USE THE CORRECT ANGLE FROM THE OPTIONS
-        movement: ([
+        options.animation.movement = [
             { transform: `scale(1) rotate(${options.rotation})` },
             { transform: `scale(1.25) rotate(${options.rotation})` },
             { transform: `scale(1) rotate(${options.rotation})` },
-        ],
-            splash.animate(
+        ];
+        splash.animate(
                 options.animation.movement,
                 options.animation.timing,
-            ));
+            );
     }
     // If it's a string then they PROBABLY? don't want anything
     // BUT we want custom animations. Gotta figure that out!
