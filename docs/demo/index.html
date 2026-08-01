@@ -26,7 +26,7 @@
     <textarea rows="12">Use this textarea to test the text's moving capabilities!</textarea>
     <img src="./icon.png" class="icon">
     <img src="./icon.png" class="icon2">
-    <script src="../index.js"></script>
+    <script src="./splash.js"></script>
     <div class="targets">
         <p>hello this is a group test</p>
         <p>hello this is a group test</p>
@@ -67,12 +67,14 @@
         })
 
         // Multiple Target Test
+        // I don't know why, but I think it tries to do a nonexistent element last.
         splashjs({
             // requires a query selector for them i guess.
             targets: ".targets>*",
             splashes: ["multi-splash test"],
             moveInterval: 250
         })
+        // Expected to error because of no splash array.
         splashjs({
             target: ".default-preset",
             preset: "default"
@@ -83,7 +85,7 @@
     </script>
     <script type="module">
         // Time to make a BeeMovie Script test. Why? Why the heck not!
-        const res = await fetch("../beemovie.txt");
+        const res = await fetch("./beemovie.txt");
         const text = await res.text();
         splashjs({
             target: ".icon2",

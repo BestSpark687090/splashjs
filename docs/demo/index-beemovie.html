@@ -16,7 +16,7 @@
             justify-content: center;
         }
         </style>
-        <script src="../index.js"></script>
+        <script src="./splash.js"></script>
 </head>
 <body>
     <!-- Span because divs go out all the way. This will need to be accounted for in your code.
@@ -27,7 +27,7 @@
     <br><br><br>
     <script type="module">
         // Time to make a BeeMovie Script test. Why? Why the heck not!
-        const res = await fetch("../beemovie.txt");
+        const res = await fetch("./beemovie.txt");
         const text = await res.text();
         splashjs({
             target: ".bee-split",
