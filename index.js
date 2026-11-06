@@ -4,7 +4,7 @@
 // We can't use lowercase splashjs because that would be confused with the function name.
 
 let splashJS = {
-    version: "1.0.0",
+    version: "1.0.1",
     isDOMLoaded: false,
 };
 console.log(`[SplashJS] SplashJS ${splashJS.version} loaded! - Made by BestSpark687090 %c(Find me anywhere with that name!)`, "color: gray; font-size: 75%;");
@@ -122,7 +122,7 @@ async function splashjs(options = {}) {
     let yPos = 0;
 
     let splash = document.createElement("p");
-    splash.innerText =
+    splash.innerHTML =
         options.splashes[Math.floor(Math.random() * options.splashes.length)];
     splash.style.position = "absolute";
     // // TODO: REMOVE
