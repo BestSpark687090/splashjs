@@ -4,7 +4,7 @@
 // We can't use lowercase splashjs because that would be confused with the function name.
 
 let splashJS = {
-    version: "1.0.1",
+    version: "1.0.2",
     isDOMLoaded: false,
 };
 console.log(`[SplashJS] SplashJS ${splashJS.version} loaded! - Made by BestSpark687090 %c(Find me anywhere with that name!)`, "color: gray; font-size: 75%;");
@@ -181,6 +181,7 @@ async function splashjs(options = {}) {
                 options.animation.timing,
             );
     }
+    splash.id = "splashjs"
     // If it's a string then they PROBABLY? don't want anything
     // BUT we want custom animations. Gotta figure that out!
     // Probably just use the object...
